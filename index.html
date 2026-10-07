@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>WebLAN</title>
+
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}?v=2"
+>
+
+</head>
+
+
+<body>
+
+    <!-- ================= LOGIN SCREEN ================= -->
+
+    <div id="login-screen" class="login-screen">
+
+        <div class="login-card">
+
+            <div class="logo">
+                🌐
+            </div>
+
+            <h1>WebLAN</h1>
+
+            <p>
+                Local Area Network Chat
+            </p>
+
+            <input
+                id="username-input"
+                type="text"
+                maxlength="20"
+                placeholder="Enter your name"
+                autocomplete="off"
+            >
+
+            <button id="join-button">
+                Join WebLAN
+            </button>
+
+            <div class="login-info">
+                Works over your local network
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CHAT APPLICATION ================= -->
+
+    <div id="chat-app" class="chat-app hidden">
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    🌐
+                </div>
+
+                <div>
+
+                    <h1>WebLAN</h1>
+
+                    <span>
+                        Local Network Chat
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="connection-status">
+
+                <span
+                    id="status-dot"
+                    class="status-dot"
+                ></span>
+
+                <span id="status-text">
+                    Connecting...
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+
+        <main class="main-container">
+
+
+            <!-- SIDEBAR -->
+
+            <aside class="sidebar">
+
+                <div class="sidebar-title">
+
+                    <span>ONLINE</span>
+
+                    <span
+                        id="user-count"
+                        class="user-count"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div id="users-list" class="users-list">
+                </div>
+
+
+                <div class="sidebar-footer">
+
+                    <div class="network-label">
+                        NETWORK
+                    </div>
+
+                    <div class="network-status">
+                        🟢 LAN Connected
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- CHAT -->
+
+            <section class="chat-container">
+
+
+                <div class="chat-header">
+
+                    <div>
+
+                        <h2>LAN Chat</h2>
+
+                        <p>
+                            Messages are shared with
+                            connected users
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGES -->
+
+                <div
+                    id="messages"
+                    class="messages"
+                >
+                </div>
+
+
+                <!-- INPUT -->
+
+            <div class="message-area">
+
+    <!-- Hidden file selector -->
+    <input
+        type="file"
+        id="file-input"
+        hidden
+    >
+
+    <!-- File button -->
+    <button
+        id="file-button"
+        class="file-button"
+        title="Send file"
+    >
+        📎
+    </button>
+
+    <!-- Message input -->
+    <input
+        id="message-input"
+        type="text"
+        maxlength="1000"
+        placeholder="Type a message..."
+        autocomplete="off"
+    >
+
+    <!-- Send button -->
+    <button
+        id="send-button"
+        title="Send message"
+    >
+        ➤
+    </button>
+
+</div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Flask-SocketIO serves the client locally -->
+   <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+
+    <script
+        src="{{ url_for('static', filename='js/app.js') }}"
+    ></script>
+
+</body>
+
+</html>
